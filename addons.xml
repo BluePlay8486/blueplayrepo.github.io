@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.blueplayrepo" name="[COLOR lime]Blue[COLOR aquamarine]Play[/COLOR] Repo[/COLOR]" version="1.03" provider-name="[COLOR lime]Play[/COLOR][COLOR yellow]Play[/COLOR]">
+<addon id="BluePlay.Repo" name="[B][COLOR white]Blue[/COLOR][COLOR aquamarine]Play[/COLOR] [COLOR white]Repo[/COLOR][/B]" version="1.03" provider-name="[COLOR white]Team[/COLOR][COLOR white] Blue[/COLOR][COLOR aquamarine]Play[/COLOR]">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
-  <extension point="xbmc.addon.repository" name="[COLOR lime]Blue[COLOR aquamarine]Play[/COLOR] Repo[/COLOR]">
+  <extension point="xbmc.addon.repository" name="[B][COLOR white]Blue[/COLOR][COLOR aquamarine]Play[/COLOR] [COLOR white]Repo[/COLOR][/B]">
     <dir>
     <info compressed="true">https://raw.github.com/BluePlay8486/blueplayrepo.github.io/master/addons.xml</info>
     <checksum>https://raw.github.com/BluePlay8486/blueplayrepo.github.io/master/addons.xml.md5</checksum>
