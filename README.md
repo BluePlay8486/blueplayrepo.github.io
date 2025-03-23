@@ -1,4 +1,4 @@
-# Blueplayrepo REPOSITORY
+# BluePlayRepo
 # Versão Actual: 1.03
 
 Instruções para a adição deste repo:
