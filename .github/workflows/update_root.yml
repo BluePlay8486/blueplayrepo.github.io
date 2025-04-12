@@ -3,7 +3,7 @@ name: Run update_repo.py (root)
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *' # Diariamente às 02:00 UTC
+    - cron: '0 2 * * *'
 
 jobs:
   update:
@@ -21,4 +21,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run root update_repo.py
-        run: python update_repo.py
+        run: |
+          python update_repo.py
+          echo "✅ Script root/update_repo.py finalizado com sucesso!"
