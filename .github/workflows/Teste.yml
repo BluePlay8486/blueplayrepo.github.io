@@ -33,10 +33,14 @@ jobs:
           python omega/update_repo.py  # Executa o script que atualiza os arquivos
           echo "✅ Script omega/update_repo.py finalizado com sucesso!"
 
-      - name: Commit changes to addon.xml.md5
+      - name: Check if addon.xml.md5 exists and commit
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add addon.xml.md5  # Adiciona o arquivo addon.xml.md5 ao commit
-          git commit -m "Atualiza addon.xml.md5 após execução do script"
-          git push  # Empurra as mudanças para o repositório
+          if [ -f "addon.xml.md5" ]; then
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add addon.xml.md5  # Adiciona o arquivo addon.xml.md5 ao commit
+            git commit -m "Atualiza addon.xml.md5 após execução do script"
+            git push  # Empurra as mudanças para o repositório
+          else
+            echo "🔴 O arquivo addon.xml.md5 não foi encontrado."
+          fi
