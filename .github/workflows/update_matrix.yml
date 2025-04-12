@@ -1,0 +1,26 @@
+name: Run matrix/update_repo.py
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run matrix/update_repo.py
+        run: |
+          python matrix/update_repo.py
+          echo "✅ Script matrix/update_repo.py finalizado com sucesso!"
