@@ -1,0 +1,42 @@
+name: Run omega/update_repo.py
+
+on:
+  workflow_dispatch:  # Permite que o workflow seja disparado manualmente
+  push:
+    branches:
+      - main  # Pode ser qualquer ramo que você deseja monitorar, como o "main" ou "master"
+    paths:
+      - 'addon.xml'  # Monitora mudanças específicas no arquivo addon.xml
+      - 'omega/update_repo.py'  # Monitora mudanças no script update_repo.py
+      - '**/*.md5'  # Monitora mudanças em arquivos md5, caso sejam alterados também
+  schedule:
+    - cron: '0 5 * * *'  # Dispara o workflow automaticamente todo dia às 5h UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # Instala as dependências
+
+      - name: Run omega/update_repo.py
+        run: |
+          python omega/update_repo.py  # Executa o script que atualiza os arquivos
+          echo "✅ Script omega/update_repo.py finalizado com sucesso!"
+
+      - name: Commit changes to addon.xml.md5
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add addon.xml.md5  # Adiciona o arquivo addon.xml.md5 ao commit
+          git commit -m "Atualiza addon.xml.md5 após execução do script"
+          git push  # Empurra as mudanças para o repositório
