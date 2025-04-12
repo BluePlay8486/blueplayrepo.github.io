@@ -1,0 +1,24 @@
+name: Run update_repo.py (root)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # Diariamente às 02:00 UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run root update_repo.py
+        run: python update_repo.py
